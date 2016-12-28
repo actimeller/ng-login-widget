@@ -1,11 +1,19 @@
-#login {
-  label {
-    top: 0;
-  }
-  input.ng-valid + label {
-    -webkit-transform: translateY(50px);
-    transform: translateY(50px);
-    left: 2px;
-    font-size: 14px;
-  }
+label {
+  top: 0;
 }
+
+input.ng-dirty + label {
+  -webkit-transform: translateY(50px);
+  transform: translateY(50px);
+  left: 2px;
+  font-size: 14px;
+}
+
+input.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+input.ng-valid.ng-touched {
+  border-color: #1ab188;
+}
+

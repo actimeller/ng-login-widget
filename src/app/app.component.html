@@ -1,44 +1,45 @@
   <div class="form">
 
-      <ul class="tab-group">
-        <li class="tab active"><a href="#signup">Sign Up</a></li>
-        <li class="tab"><a href="#login">Log In</a></li>
+      <ul class="tab-group" >
+        <li (click)="showForm=login" class="tab" [class.active]="showForm == login"><a href="#login">Log In</a></li>
+        <li (click)="showForm=0" class="tab" [class.active]="showForm == 0"><a href="#signup">Sign Up</a></li>
       </ul>
 
-      <div class="tab-content">
-        <div id="signup">
+      <div class="tab-content" [ngSwitch]="showForm">
+
+        <div *ngSwitchDefault id="signup">
           <h1>Sign Up for Free</h1>
 
-          <form [formGroup]="reactForm" (ngSubmit)="regSubmit(reactForm.value)">
+          <form [formGroup]="reactiveForm" (ngSubmit)="regSubmit(reactiveForm.value)">
 
           <div class="top-row">
             <div class="field-wrap">
+              <input type="text" formControlName="firstname"/>
               <label>
                 First Name<span class="req">*</span>
               </label>
-              <input type="text" formControlName="firstname"/>
             </div>
 
             <div class="field-wrap">
+              <input type="text" formControlName="lastname"/>
               <label>
                 Last Name<span class="req">*</span>
               </label>
-              <input type="text" formControlName="lastname"/>
             </div>
           </div>
 
           <div class="field-wrap">
+            <input type="email" formControlName="email"/>
             <label>
               Email Address<span class="req">*</span>
             </label>
-            <input type="email" formControlName="email"/>
           </div>
 
           <div class="field-wrap">
+            <input type="password" formControlName="password"/>
             <label>
               Set A Password<span class="req">*</span>
             </label>
-            <input type="password" formControlName="password"/>
           </div>
 
           <button type="submit" class="button button-block">Get Started</button>
@@ -47,7 +48,7 @@
 
         </div>
 
-        <div id="login" hidden>
+        <div *ngSwitchCase="login" id="login">
           <h1>Welcome Back!</h1>
 
           <form #templateDriverForm="ngForm" (ngSubmit)="loginSubmit(templateDriverForm.value)">
