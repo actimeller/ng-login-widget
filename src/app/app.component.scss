@@ -1,0 +1,11 @@
+#login {
+  label {
+    top: 0;
+  }
+  input.ng-valid + label {
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+    left: 2px;
+    font-size: 14px;
+  }
+}
